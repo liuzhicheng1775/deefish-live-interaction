@@ -70,10 +70,11 @@ async def health():
 
 @app.post("/webhook/douyin")
 async def douyin_webhook(request: Request):
-    """抖音官方 Webhook 回调地址"""
-    event = await parse_webhook(request)
-    asyncio.create_task(_dispatch(event))
-    return JSONResponse({"code": 0, "message": "ok"})
+    """抖音官方 Webhook 回调地址。必须 2 秒内返回 2XX，否则平台认为推送失败。"""
+    events = await parse_webhook(request)
+    for ev in events:
+        asyncio.create_task(_dispatch(ev))
+    return JSONResponse({"code": 0, "message": "ok", "count": len(events)})
 
 
 @app.get("/cards")

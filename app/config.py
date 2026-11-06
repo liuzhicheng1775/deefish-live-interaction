@@ -23,7 +23,14 @@ class EnvSettings(BaseSettings):
     douyin_client_key: str = ""
     douyin_client_secret: str = ""
     douyin_app_id: str = ""
+    # 通用验签 token（兜底）
     douyin_webhook_verify_token: str = ""
+    # 各类数据推送密钥（与抖音后台「直播互动数据配置」一一对应）
+    douyin_secret_gift: str = ""
+    douyin_secret_comment: str = ""
+    douyin_secret_like: str = ""
+    douyin_secret_enter: str = ""
+    douyin_secret_follow: str = ""
 
     # 逆向 WS 模式
     douyin_sign_api_url: str = ""
