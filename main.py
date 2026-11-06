@@ -91,7 +91,7 @@ async def test_comment(body: dict[str, Any]):
     """测试：手动模拟一条弹幕"""
     event = {
         "source": "test",
-        "event_type": body.get("type", "comment"),
+        "msg_type": body.get("type", "live_comment"),
         "user_id": body.get("user_id", "test_user_1"),
         "nickname": body.get("nickname", "测试观众"),
         "content": body.get("content", "主播今天吃什么？"),
